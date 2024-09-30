@@ -10,7 +10,7 @@ function Hero() {
   return (
     <>
       <Link href="/some-path" className=" cursor-default">
-        <div className="m-6 rounded-lg">
+        <div className="mx-2.5">
           <Swiper
             className="mySwiper"
             spaceBetween={50}
@@ -18,7 +18,6 @@ function Hero() {
             pagination={{ clickable: true }}
             keyboard={{ enabled: true }}
             modules={[Pagination, Keyboard]}
-            style={{ margin: "20px" }}
           >
             {images.map(
               (
@@ -27,21 +26,17 @@ function Hero() {
               ) => (
                 <SwiperSlide key={index}>
                   <div
-                    style={{
-                      position: "relative",
-                      width: "100%",
-                      height: "500px",
-                    }}
+                    className="relative h-[400px] w-[100%] rounded-xl"
                   >
                     <Image
                       src={image.src}
                       alt={image.name}
                       quality={100}
                       fill
-                      sizes="100vw"
                       style={{
                         objectFit: "cover",
                       }}
+                      className="rounded-xl z-[-100]"
                     />
                     {/* Overlay for large text */}
                     <div className="absolute bottom-20 mb-5 ml-16 p-4 bg-white/30 rounded-lg backdrop-blur-lg">
