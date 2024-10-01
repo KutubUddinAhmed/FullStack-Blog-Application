@@ -12,12 +12,12 @@ const images: image[] = [
   },
   {
     name: "Welcome to Blog World!!!!",
-    aurthor: "John Doe",
+    aurthor: "Jane Dona",
     src: "/hero/h2.jpg",
   },
   {
     name: "Welcome to Blog World!!!!",
-    aurthor: "John Doe",
+    aurthor: "Jane bhi Dedo",
     src: "/hero/h3.jpg",
   },
 ];
