@@ -10,11 +10,11 @@ import Image from "next/image";
 
 function Companies() {
   return (
-    <section className="w-screen mt-2">
-      <span className="flex justify-center font-bold sm:text-2xl">Our Readers</span>
+    <section className="mx-[6px] max-w-screen mt-2 border-b-2 p-2 dark:bg-white ">
+      {/* <span className="flex justify-center font-bold sm:text-2xl">Our Readers</span> */}
       <Swiper
-        spaceBetween={20}                 // Space between images
-        slidesPerView={4}                 // Show 4 images at a time (you can adjust this)
+        spaceBetween={40}                 // Space between images
+        slidesPerView={5}                 // Show 4 images at a time (you can adjust this)
         loop={true}                       // Enable looping for infinite scrolling
         autoplay={{
           delay: 2000,                       // No delay between scrolls
@@ -25,21 +25,21 @@ function Companies() {
         grabCursor={true}                 // Changes cursor to grabbing style
         freeMode={true}                   // Enables free-flowing slides without snapping
         modules={[Autoplay]}              // Load autoplay module
-        className="mySwiper mt-2  "
+        className="mySwiper mt-2"
       >
         {c_image.map((image: { src: string }, index: number) => (
-          <div key={index} >
-              <SwiperSlide >
-            <div >
-              <Image
-                src={image.src}
-                alt="companieslogos"
-                width={100}
-                height={100}
-                className="aspect-[3/2] h-[50px] sm:h-[80px] sm:aspect-[5/3] object-contain bg-white"
-              />
-            </div>
-          </SwiperSlide>
+          <div key={index}>
+            <SwiperSlide>
+              <div>
+                <Image
+                  src={image.src}
+                  alt="companieslogos"
+                  width={100}
+                  height={100}
+                  className="aspect-[3/2] sm:h-[50px] sm:aspect-[5/3] object-contain bg-white dark:bg-white"
+                />
+              </div>
+            </SwiperSlide>
           </div>
         ))}
       </Swiper>

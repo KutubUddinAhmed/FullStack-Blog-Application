@@ -10,7 +10,7 @@ function Hero() {
   return (
     <>
       <Link href="/some-path" className="cursor-default">
-        <div className="mx-[3px] sm:mx-[4px] md:mx-[6px] lg:mx-2 ">
+        <div className="mx-[3px] sm:mx-[4px] md:mx-[6px] lg:mx-2 mt-[-25px] z-[-10]">
           <Swiper
             className="mySwiper"
             spaceBetween={50}
