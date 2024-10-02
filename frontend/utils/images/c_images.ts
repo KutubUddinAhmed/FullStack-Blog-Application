@@ -27,10 +27,10 @@ const c_image = [
         src: "/companies/brand7.png"
     },
     {
-        src: "/companies/brand8.png"
+        src: "/companies/brand9.png"
     },
     {
-        src: "/companies/brand9.png"
+        src: "/companies/brandg.png"
     },
 ]
 

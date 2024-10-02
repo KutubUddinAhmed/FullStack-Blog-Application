@@ -1,42 +1,69 @@
-interface BlogPost {
+interface right_blogs {
   Title: string;
-  Content: string;
   Author: string;
-  category: string;
   Image: string;
   Date: string;
-  Time: string;
+    Time: string;
+    Slug: string
 }
 
-const blogPosts: BlogPost[] = [
+const right_blogs: right_blogs[] = [
   {
     Title: "Exploring the Universe",
-    Content:
-      "A deep dive into the mysteries of the cosmos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio vitae error",
     Author: "Jane Doe",
-    category: "Sports",
-    Image: "/companies/brand1.png",
+    Image: "/companies/brand5.png",
     Date: "2024-10-01",
-    Time: "10:00 AM"
+        Time: "10:00 AM",
+    Slug: "blog1",
   },
   {
     Title: "The Art of Cooking",
-    Content: "Delicious recipes and cooking tips from around the world.",
     Author: "John Smith",
-    category: "Sports",
+    Image: "/companies/brand9.png",
+    Date: "2024-10-01",
+      Time: "11:00 AM",
+    Slug: "blog2",
+  },
+  {
+    Title: "The Art of Cooking",
+    Author: "John Smith",
+    Image: "/companies/brand7.png",
+    Date: "2024-10-01",
+      Time: "11:00 AM",
+    Slug: "blog3",
+  },
+  {
+    Title: "The Art of Cooking",
+    Author: "John Smith",
     Image: "/companies/brand2.png",
     Date: "2024-10-01",
-    Time: "11:00 AM"
+      Time: "11:00 AM",
+    Slug: "blog4",
+  },
+  {
+    Title: "The Art of Cooking",
+    Author: "John Smith",
+    Image: "/companies/brand2.png",
+    Date: "2024-10-01",
+      Time: "11:00 AM",
+    Slug: "blog5",
+  },
+  {
+    Title: "The Art of Cooking",
+    Author: "John Smith",
+    Image: "/companies/brand2.png",
+    Date: "2024-10-01",
+      Time: "11:00 AM",
+    Slug: "blog6",
   },
   {
     Title: "Tech Innovations",
-    Content: "Latest trends and breakthroughs in technology.",
     Author: "Alice Johnson",
-    category: "Sports",
     Image: "/companies/brand4.png",
     Date: "2024-10-01",
-    Time: "12:00 PM"
+      Time: "12:00 PM",
+    Slug: "blog7",
   }
 ];
 
-export default blogPosts;
+export default right_blogs;
