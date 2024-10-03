@@ -1,5 +1,4 @@
 import Companies from "@/components/companies";
-import Footer from "@/components/footer";
 import Hero from "@/components/Hero/hero";
 import Multi_blog from "@/components/multi_blog";
 
