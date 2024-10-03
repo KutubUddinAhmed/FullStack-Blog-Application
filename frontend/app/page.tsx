@@ -9,7 +9,6 @@ export default function Home() {
       <Hero />
       <Companies />
       <Multi_blog />
-      <Footer />
     </main>
     
   )
