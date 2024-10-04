@@ -1,3 +1,4 @@
+import { Button } from "../ui/button";
 
 
 function Contact () {
@@ -50,7 +51,7 @@ function Contact () {
               </div>
 
               <div className="mt-4 grid">
-                <button type="submit" className="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">Send inquiry</button>
+                <Button className="w-full py-5 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent text-white focus:outline-none disabled:opacity-50 disabled:pointer-events-none dark:bg-black  dark:border-white/70">Send Inquiry</Button>
               </div>
 
               <div className="mt-3 text-center">
