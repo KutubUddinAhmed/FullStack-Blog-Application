@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const registerRouter = require("./routes/resgisterRouter.js");
+const registerRouter = require("./routes/router.js");
 
 require("dotenv").config();
 require("./models/db.js");
@@ -17,7 +17,6 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // Routes
-
 app.use(registerRouter);
 
 app.listen(PORT, () => {
