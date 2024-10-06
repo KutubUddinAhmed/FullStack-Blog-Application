@@ -5,7 +5,6 @@ import {
   Sheet,
   SheetContent,
   SheetDescription,
-  SheetHeader,
   SheetTrigger,
 } from "@/components/ui/sheet";
 
@@ -93,8 +92,7 @@ const Navbar = () => {
             side="left"
             className="w-[250px] flex justify-center items-center bg-white"
           >
-            <SheetHeader>
-              <SheetDescription className=" ">
+              <SheetDescription>
                 <div className="flex flex-col items-center space-y-6 text-2xl text-black">
                   <Link href="/" className="hover:text-slate-700 font-semibold">
                     Home
@@ -119,7 +117,6 @@ const Navbar = () => {
                   </Link>
                 </div>
               </SheetDescription>
-            </SheetHeader>
           </SheetContent>
         </Sheet>
         <div>

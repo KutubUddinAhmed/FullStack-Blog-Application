@@ -1,11 +1,12 @@
-import Content_related from "@/components/blog_page_components/content_related";
-import Title from "@/components/blog_page_components/title";
+import Content_related from "@/components/BlogComponents/content_related";
+import Title from "@/components/BlogComponents/title";
 
 function page() {
     return (
         <section>
             <Title />
         <Content_related />
+           
         </section>
   );
 }

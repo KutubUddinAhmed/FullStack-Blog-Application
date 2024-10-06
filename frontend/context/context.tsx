@@ -3,9 +3,12 @@ import { createContext, ReactNode, useState, Dispatch, SetStateAction } from 're
 
 // Define the type for the context value
 interface ContextValueType {
-  message: string;
-  toggle: boolean;
-  setToggle: Dispatch<SetStateAction<boolean>>; // Type for the state setter
+  password: string;
+  confirmPassword: string; 
+  error: string;
+  setPassword: Dispatch<SetStateAction<string>>; // Type for the state setter
+  setConfirmPassword: Dispatch<SetStateAction<string>>; // Type for the state setter
+  setError: Dispatch<SetStateAction<string>>; // Type for the state setter
 }
 
 // Define the type for the props of the Context component
@@ -17,11 +20,12 @@ interface ContextProps {
 export const ContextProviderApp = createContext<ContextValueType | null>(null);
 
 function Context({ children }: ContextProps) {
-  const message: string = "Rafiq";
-  const [toggle, setToggle] = useState<boolean>(true); // Ensure toggle is typed as boolean
+  const [password, setPassword] = useState<string>(""); // Explicitly set the type
+  const [confirmPassword, setConfirmPassword] = useState<string>(""); // Explicitly set the type
+  const [error, setError] = useState<string>(""); // Explicitly set the type
 
   return (
-    <ContextProviderApp.Provider value={{ message, toggle, setToggle }}>
+    <ContextProviderApp.Provider value={{ password, setPassword, confirmPassword, setConfirmPassword, error, setError }}>
       {children}
     </ContextProviderApp.Provider>
   );
