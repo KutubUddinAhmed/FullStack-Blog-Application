@@ -12,7 +12,7 @@ const signupController = async (req, res) => {
     if (user) {
       return res
         .status(409)
-        .json({ msgs: "User Already Exist", sucess: false });
+        .json({ msgs: "User Already Exist", success: false });
     }
 
     //   Create new user
@@ -25,7 +25,7 @@ const signupController = async (req, res) => {
 
     return res
       .status(201)
-      .json({ msgs: "User Registered Successfully", sucess: true });
+      .json({ msgs: "User Registered Successfully", success: true });
   } catch (error) {
     return res.status(500).json({ msgs: "Internal Server Error" }, error);
   }
@@ -37,14 +37,18 @@ const loginController = async (req, res) => {
     // Check if user already exist
     const user = await User.findOne({ email });
     if (!user) {
-      return res.status(401).json({ msgs: "Invalid Credentials" });
+      return res
+        .status(401)
+        .json({ msgs: "Invalid Credentials", success: false });
     }
 
     // Compare the passwords
 
     const isPassword = await bcrypt.compare(password, user.password);
     if (!isPassword) {
-      return res.status(401).json({ msgs: "Invalid Passwords" });
+      return res
+        .status(401)
+        .json({ msgs: "Invalid Passwords", success: false });
     }
 
     // Authentication using JWT
@@ -59,6 +63,8 @@ const loginController = async (req, res) => {
       jwt_token,
       email,
       name: user.name,
+      success: true,
+      is_login: true,
     });
   } catch (error) {
     return res

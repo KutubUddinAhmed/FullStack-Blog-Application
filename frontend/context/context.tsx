@@ -1,31 +1,51 @@
 "use client";
 import { createContext, ReactNode, useState, Dispatch, SetStateAction } from 'react';
 
+// Define the type for loginInfo
+interface LoginInfo {
+  email: string;
+  password: string;
+  confirmPassword: string;
+}
+
+interface LoginInUser {
+  logedinUser: string,
+  token: string,
+  is_logedin: boolean
+}
+
 // Define the type for the context value
 interface ContextValueType {
-  password: string;
-  confirmPassword: string; 
-  error: string;
-  setPassword: Dispatch<SetStateAction<string>>; // Type for the state setter
-  setConfirmPassword: Dispatch<SetStateAction<string>>; // Type for the state setter
-  setError: Dispatch<SetStateAction<string>>; // Type for the state setter
+  loginInfo: LoginInfo; // State for login information  
+  userLogin: LoginInUser;
+  setLoginInfo: Dispatch<SetStateAction<LoginInfo>>; // Setter for loginInfo
+  setUserLogin: Dispatch<SetStateAction<LoginInUser>>;
 }
 
 // Define the type for the props of the Context component
 interface ContextProps {
-  children: ReactNode; // ReactNode to allow children elements
+  children: ReactNode;
 }
 
 // Create the context with the defined type
 export const ContextProviderApp = createContext<ContextValueType | null>(null);
 
 function Context({ children }: ContextProps) {
-  const [password, setPassword] = useState<string>(""); // Explicitly set the type
-  const [confirmPassword, setConfirmPassword] = useState<string>(""); // Explicitly set the type
-  const [error, setError] = useState<string>(""); // Explicitly set the type
+  // State for loginInfo, which now includes email, password, and confirmPassword
+  const [loginInfo, setLoginInfo] = useState<LoginInfo>({
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+
+  const [userLogin, setUserLogin] = useState<LoginInUser>({
+    logedinUser: "",
+    token: "",
+    is_logedin: false
+  })
 
   return (
-    <ContextProviderApp.Provider value={{ password, setPassword, confirmPassword, setConfirmPassword, error, setError }}>
+    <ContextProviderApp.Provider value={{ loginInfo, setLoginInfo, userLogin, setUserLogin  }}>
       {children}
     </ContextProviderApp.Provider>
   );
