@@ -8,6 +8,7 @@ import { Label } from "@/components/ui/label";
 import { ToastContainer } from "react-toastify";
 import { handleSucess, handleError } from '@/utils/utils.js';
 import { useRouter } from "next/navigation";
+import Cookies from 'js-cookie';
 
 function Login() {
   const router = useRouter();
@@ -19,7 +20,7 @@ function Login() {
     throw new Error("MyComponent must be used within a ContextProviderApp");
   }
   const { loginInfo, setLoginInfo } = context;
-  const { email, password, confirmPassword } = loginInfo;
+  const { email, password } = loginInfo;
 
   function handleChangeEvent(e: any) {
     const { name, value } = e.target;
@@ -31,9 +32,6 @@ function Login() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (password !== confirmPassword) {
-      return handleError("Password not matched");
-    }
     try {
       const response = await fetch(url, {
         method: "POST",
@@ -44,18 +42,20 @@ function Login() {
       const result = await response.json();
       const { success, msgs, error, jwt_token, name, is_login } = result;
 
-       const  userDetails = {
+      const userDetails = {
         "logedinUser": name,
         "token": jwt_token,
         "is_login": is_login,
-      }
+      };
 
       if (success) {
         handleSucess(msgs);
-        localStorage.setItem("admin", JSON.stringify(userDetails))
-        setTimeout(() => {router.push('/admin')}, 1000)
+        Cookies.set("admin", JSON.stringify(userDetails)); // Fix here
+        setTimeout(() => {
+          router.push('/dashboard');
+        }, 1000);
       } else if (error) {
-        const details = error?.details[0].message;
+        const details = error?.details[0]?.message;
         handleError(details);
       } else if (!success) {
         handleError(msgs);
@@ -65,7 +65,7 @@ function Login() {
       return handleError(error);
     }
 
-    setLoginInfo({ email: "", password: "", confirmPassword: "" });
+    setLoginInfo({ email: "", password: ""});
   };
 
   return (
@@ -102,18 +102,6 @@ function Login() {
                   onChange={handleChangeEvent}
                 />
               </div>
-              <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="confirm-password">Confirm Password</Label>
-                <Input
-                  id="confirm-password"
-                  type="password"
-                  placeholder="Enter your password"
-                  name="confirmPassword"
-                  autoComplete="new-password"
-                  value={confirmPassword}
-                  onChange={handleChangeEvent}
-                />
-              </div>
             </div>
             <div className="mt-10 text-center">
               <Button type="submit" variant="outline">
@@ -127,6 +115,5 @@ function Login() {
     </section>
   );
 }
-
 
 export default Login;

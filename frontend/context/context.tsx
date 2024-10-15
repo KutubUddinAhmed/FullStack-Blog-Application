@@ -5,7 +5,6 @@ import { createContext, ReactNode, useState, Dispatch, SetStateAction } from 're
 interface LoginInfo {
   email: string;
   password: string;
-  confirmPassword: string;
 }
 
 interface LoginInUser {
@@ -35,7 +34,6 @@ function Context({ children }: ContextProps) {
   const [loginInfo, setLoginInfo] = useState<LoginInfo>({
     email: "",
     password: "",
-    confirmPassword: "",
   });
 
   const [userLogin, setUserLogin] = useState<LoginInUser>({

@@ -2,10 +2,14 @@
 import React, { useContext, useEffect } from "react";
 import { ContextProviderApp } from "@/context/context";
 import { useRouter } from "next/navigation";
-function Admin() {
-  const context = useContext(ContextProviderApp);
+import Cookies from 'js-cookie'
 
-    const router = useRouter();
+
+
+function Dashboard() {
+const context = useContext(ContextProviderApp);
+const router = useRouter();
+
 
   if (!context) {
     throw new Error("Admin component must be used within a ContextProviderApp");
@@ -15,7 +19,7 @@ function Admin() {
 
   // This useEffect will run after the component mounts
   useEffect(() => {
-    const storedData = localStorage.getItem("admin");
+    const storedData = Cookies.get("admin");
     if (storedData) {
       setUserLogin(JSON.parse(storedData));
     }
@@ -23,17 +27,17 @@ function Admin() {
 
   function logout() {
     // Perform logout actions
-    localStorage.removeItem("admin");
-      setUserLogin({ logedinUser: "", token: "", is_logedin: false });
-    router.push('/login')
-  }
+    document.cookie = "admin=; path=/;";
+    setUserLogin({ logedinUser: "", token: "", is_logedin: false });
+    router.push('/login');
+}
 
   return (
     <section>
-      <h1>{userLogin.token ? `Token: ${userLogin.token}`: "Guest"}</h1>
+      <h1>{userLogin.logedinUser ? `Admin: ${userLogin.logedinUser}`: "Guest"}</h1>
       <button onClick={logout}>Log out</button>
     </section>
   );
 }
 
-export default Admin;
+export default Dashboard;
