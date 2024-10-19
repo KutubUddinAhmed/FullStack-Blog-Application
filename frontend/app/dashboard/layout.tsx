@@ -1,17 +1,12 @@
-import Dashboard from "@/components/Dashboard"
-import Context from "@/context/context"
-
+// app/dashboard/layout.tsx
 export default function DashboardLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
-    return (
-        <Context>
-        <section>
-            This is Dashboard
-            {children}
-            </section>
-            </Context>
-            )
+  return (
+    <div>
+      <main>{children}</main>
+    </div>
+  );
 }

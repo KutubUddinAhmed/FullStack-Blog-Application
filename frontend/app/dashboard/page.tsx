@@ -1,12 +1,11 @@
-import Dashboard from '@/components/Dashboard'
+import Sidebar from '@/components/Sidebar'
 import React from 'react'
 
-function page() {
+export default function DashboardPage() {
   return (
       <section>
-          <Dashboard />
+      <Sidebar />
     </section>
   )
 }
 
-export default page
