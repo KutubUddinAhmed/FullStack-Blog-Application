@@ -6,9 +6,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { ToastContainer } from "react-toastify";
-import { handleSucess, handleError } from '@/utils/utils.js';
+import { handleSucess, handleError } from "@/utils/utils.js";
 import { useRouter } from "next/navigation";
-import Cookies from 'js-cookie';
+import Cookies from "js-cookie";
 
 function Login() {
   const router = useRouter();
@@ -24,9 +24,9 @@ function Login() {
 
   function handleChangeEvent(e: any) {
     const { name, value } = e.target;
-    setLoginInfo(prev => ({
+    setLoginInfo((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   }
 
@@ -35,24 +35,24 @@ function Login() {
     try {
       const response = await fetch(url, {
         method: "POST",
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password })
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
       });
 
       const result = await response.json();
       const { success, msgs, error, jwt_token, name, is_login } = result;
 
       const userDetails = {
-        "logedinUser": name,
-        "token": jwt_token,
-        "is_login": is_login,
+        logedinUser: name,
+        token: jwt_token,
+        is_login: is_login,
       };
 
       if (success) {
         handleSucess(msgs);
         Cookies.set("admin", JSON.stringify(userDetails)); // Fix here
         setTimeout(() => {
-          router.push('/dashboard');
+          router.push("/dashboard");
         }, 1000);
       } else if (error) {
         const details = error?.details[0]?.message;
@@ -60,12 +60,11 @@ function Login() {
       } else if (!success) {
         handleError(msgs);
       }
-
     } catch (error) {
       return handleError(error);
     }
 
-    setLoginInfo({ email: "", password: ""});
+    setLoginInfo({ email: "", password: "" });
   };
 
   return (

@@ -1,5 +1,11 @@
 "use client";
-import { createContext, ReactNode, useState, Dispatch, SetStateAction } from 'react';
+import {
+  createContext,
+  ReactNode,
+  useState,
+  Dispatch,
+  SetStateAction,
+} from "react";
 
 // Define the type for loginInfo
 interface LoginInfo {
@@ -8,20 +14,21 @@ interface LoginInfo {
 }
 
 interface LoginInUser {
-  logedinUser: string,
-  token: string,
-  is_logedin: boolean
+  logedinUser: string;
+  token: string;
+  is_logedin: boolean;
 }
 
 // Define the type for the context value
 interface ContextValueType {
-  loginInfo: LoginInfo; // State for login information  
+  loginInfo: LoginInfo; // State for login information
   setLoginInfo: Dispatch<SetStateAction<LoginInfo>>; // Setter for loginInfo
   userLogin: LoginInUser;
   setUserLogin: Dispatch<SetStateAction<LoginInUser>>;
   selectedSideBarOption: String;
   setSelectedSideBarOption: Dispatch<SetStateAction<String>>;
-
+  adminImageClicked: Boolean;
+  setAdminImageClicked: Dispatch<SetStateAction<boolean>>;
 }
 
 // Define the type for the props of the Context component
@@ -33,7 +40,7 @@ interface ContextProps {
 export const ContextProviderApp = createContext<ContextValueType | null>(null);
 
 function Context({ children }: ContextProps) {
-  // State for loginInfo, which now includes email, password, and confirmPassword
+  // State for loginInfo, which now includes email and password.
   const [loginInfo, setLoginInfo] = useState<LoginInfo>({
     email: "",
     password: "",
@@ -43,19 +50,32 @@ function Context({ children }: ContextProps) {
   const [userLogin, setUserLogin] = useState<LoginInUser>({
     logedinUser: "",
     token: "",
-    is_logedin: false
-  })
+    is_logedin: false,
+  });
 
   // Sidebar option selector
+  const [selectedSideBarOption, setSelectedSideBarOption] =
+    useState<String>("");
 
-  const [selectedSideBarOption, setSelectedSideBarOption] = useState<String>("")
+  // Admin Profile
+  const [adminImageClicked, setAdminImageClicked] = useState<boolean>(false);
 
   return (
-    <ContextProviderApp.Provider value={{ loginInfo, setLoginInfo, userLogin, setUserLogin, selectedSideBarOption, setSelectedSideBarOption  }}>
+    <ContextProviderApp.Provider
+      value={{
+        loginInfo,
+        setLoginInfo,
+        userLogin,
+        setUserLogin,
+        selectedSideBarOption,
+        setSelectedSideBarOption,
+        adminImageClicked,
+        setAdminImageClicked,
+      }}
+    >
       {children}
     </ContextProviderApp.Provider>
   );
 }
 
 export default Context;
-
