@@ -15,16 +15,18 @@ const BlogSchema = new mongoose.Schema(
       required: true,
     },
     image: {
-      type: String,
+      type: String, // multer >> path = string >> path << image >> string
       required: true,
     },
     date_time: {
-      type: String,
+      type: Date,
       required: true,
+      default: Date.now(),
     },
     is_featured_blog: {
-      type: Boolean,
-      required: false,
+      type: String,
+      required: true,
+      default: "null",
     },
     category: {
       type: String,

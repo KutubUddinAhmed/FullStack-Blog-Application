@@ -5,9 +5,7 @@ const blogValidation = (req, res, next) => {
     title: joi.string().required(),
     author: joi.string().required(),
     content: joi.string().required(),
-    image: joi.string().required(),
-    date_time: joi.string().required(),
-    is_featured_blog: joi.boolean().required(),
+    is_featured_blog: joi.string().required(),
     category: joi.string().required(),
   });
 

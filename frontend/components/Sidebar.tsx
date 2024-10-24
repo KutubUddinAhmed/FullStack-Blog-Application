@@ -11,6 +11,9 @@ import { MdDashboard, MdLogout, MdMenu, MdClose } from "react-icons/md";
 import { BsBoundingBox } from "react-icons/bs";
 import { FaRegPenToSquare } from "react-icons/fa6";
 import { GoGear } from "react-icons/go";
+import AddBlogs from "./AdminComponents/AddBlogs";
+import ApiCards from "./ApiCards";
+import FeedBackContact from "./AdminComponents/FeedBackContact";
 
 function Sidebar() {
   const router = useRouter();
@@ -19,7 +22,7 @@ function Sidebar() {
   const { selectedSideBarOption, setSelectedSideBarOption }: any = context;
 
   // State for toggling the sidebar on smaller screens
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   useEffect(() => {
     const userData = Cookies.get("admin");
@@ -45,7 +48,7 @@ function Sidebar() {
   const SideBarOption = [
     { label: "Dashboard", value: "option1", icons: <MdDashboard /> },
     { label: "Blogs", value: "option2", icons: <FaRegPenToSquare /> },
-    { label: "About", value: "option3", icons: <BsBoundingBox /> },
+    { label: "Contact", value: "option3", icons: <BsBoundingBox /> },
     { label: "Settings", value: "option4", icons: <GoGear /> },
   ];
 
@@ -59,9 +62,9 @@ function Sidebar() {
       case "option1":
         return <Dashboard />;
       case "option2":
-        return <p>Option 2 is selected</p>;
+        return <AddBlogs />;
       case "option3":
-        return <p>Option 3 is selected</p>;
+        return <FeedBackContact />;
       case "option4":
         return <p>Option 4 is selected</p>;
       default:

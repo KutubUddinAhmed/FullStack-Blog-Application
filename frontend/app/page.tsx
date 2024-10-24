@@ -9,6 +9,5 @@ export default function Home() {
       <Companies />
       <Multi_blog />
     </main>
-    
-  )
+  );
 }
